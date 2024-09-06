@@ -1,2 +1,1 @@
-# peakperformancecode.io
-peakperformancecode.io
+# Peak performance code
