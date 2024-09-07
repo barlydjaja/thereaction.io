@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { serif } from '@/app/fonts';
 import HomeLink from '@/components/HomeLink';
+import PersonalLink from '@/components/PersonalLink';
 
 export const metadata: Metadata = {
   title: "PeakPerformanceCode - A Blog",
@@ -24,9 +25,8 @@ export default function RootLayout({children}: RootLayoutProps) {
     <html lang="en" className={serif.className}>
       <body className='antialiased mx-auto max-w-2xl bg-[--bg] px-5 py-12 text-[--text]'>
         <header className="mb-14 flex flex-row place-content-between">
-          <HomeLink />
-
-          <span>me  here</span>
+          <HomeLink/>
+          <PersonalLink/>
         </header>
 
         <main>
