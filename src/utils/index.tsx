@@ -1,14 +1,19 @@
-export type TryCatch<Data, E extends Error = Error> =
-  | [null, Data]
-  | [E, null];
+function check<PromiseData>(cb: () => Promise<PromiseData>) {
+  if (typeof cb !== 'function') {
+    throw Error('fn should be a function!');
 
-export async function tryCatch<D, E extends Error = Error>(
-  callback: () => Promise<D>,
-): Promise<TryCatch<D, E>> {
+  }
+}
+
+export async function tryCatch<PromiseData, FnArgs extends unknown[] >(
+  cb: (...args: FnArgs) => Promise<PromiseData>,
+  ...args: FnArgs
+): Promise<[Error] | [null, PromiseData]> {
+  check(cb)
+
   try {
-    const data = await callback();
-    return [null, data];
+    return [null, await cb(...args)];
   } catch (error) {
-    return [error as E, null];
+    return [error as Error];
   }
 }

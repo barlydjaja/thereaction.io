@@ -12,7 +12,7 @@ interface Post {
 
 export const getPosts = async (): Promise<Post[]> => {
   const getDirectoryNames = async (path: string): Promise<null | Omit<Post, 'metaData'>[]> => {
-    const [error, entries] = await tryCatch(() => readdir(path, { withFileTypes: true }));
+    const [error, entries] = await tryCatch(readdir, path, {withFileTypes: true});
 
     if (error) {
       return null;
