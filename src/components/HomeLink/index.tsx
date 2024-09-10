@@ -11,7 +11,7 @@ const HomeLink = () => {
         "inline-block text-2xl font-black hover:scale-[1.02]",
       )}
     >
-      <span className='font-bold'>PeakPerformanceCode</span>
+      <span className='font-bold'>The Reaction</span>
     </Link>
   );
 };

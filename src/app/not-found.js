@@ -19,7 +19,7 @@ const NotFound = () => {
         <p>This page doesn&apos;t exist (yet?)</p>
         <p>
           I recently rewrote the site so maybe something broke. Please&nbsp;
-          <Link href="https://github.com/barlydjaja/peakperformancecode.io" target="_blank" rel="noopener noreferrer">
+          <Link href="https://github.com/barlydjaja/thereaction.io" target="_blank" rel="noopener noreferrer">
             complain here.
           </Link>
         </p>
