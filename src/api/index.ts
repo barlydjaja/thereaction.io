@@ -3,7 +3,7 @@ import { tryCatch } from '@/utils';
 import matter from 'gray-matter';
 import { readFileSync } from 'fs';
 
-interface Post {
+export interface Post {
   slug: string;
   metaData: {
     [key: string]: string;

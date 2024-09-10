@@ -23,8 +23,8 @@ interface RootLayoutProps {
 export default function RootLayout({children}: RootLayoutProps) {
   return (
     <html lang="en" className={serif.className}>
-      <body className='antialiased mx-auto max-w-2xl bg-[--bg] px-5 py-12 text-[--text]'>
-        <header className="mb-14 flex flex-row place-content-between">
+      <body className='antialiased mx-auto max-w-screen-md bg-[--bg] px-5 py-12 text-[--text]'>
+        <header className="mb-14 flex flex-row place-content-between flex-wrap items-center">
           <HomeLink/>
           <PersonalLink/>
         </header>

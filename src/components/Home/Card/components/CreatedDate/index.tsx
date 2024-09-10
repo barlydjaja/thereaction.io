@@ -4,7 +4,7 @@ interface DateProps {
 
 const CreatedDate = ({date}: DateProps) => {
   return (
-    <p className="text-[13px] text-gray-700 dark:text-gray-300">
+    <p className="text-[13px] text-[#8D8585]">
       {new Date(date).toLocaleDateString("en", {
         day: "numeric",
         month: "long",

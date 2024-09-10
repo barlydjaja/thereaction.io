@@ -2,6 +2,7 @@
 title: 'To Comment or Not To Comment'
 date: '2024-09-08'
 desc: 'Do we even need to comment our code?'
+thumbnail: 'https://github.com/barlydjaja.png'
 ---
 
 Have you ever wondered why did so many programmers write comment on their codebase? was it even necessary to go such lengths?

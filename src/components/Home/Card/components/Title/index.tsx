@@ -11,7 +11,7 @@ const Title = ({text}: TitleProps) => {
     <h2
       className={cx(
         sans.className,
-        "text-[28px] font-black",
+        "text-md sm:text-2xl font-bold",
       )}
     >
       {text}

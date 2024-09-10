@@ -1,5 +1,3 @@
-"use client";
-
 import Link from 'next/link';
 import { sans } from '@/app/fonts';
 import cx from 'classnames';
