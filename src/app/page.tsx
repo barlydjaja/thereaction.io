@@ -13,7 +13,7 @@ export default async function Home() {
           className="block hover:scale-[1.005]"
           href={slug}
         >
-          <Card metaData={metaData} slug={slug} />
+          <Card metaData={metaData} slug={slug}/>
         </Link>
       ))}
     </div>
