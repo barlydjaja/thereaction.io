@@ -1,5 +1,6 @@
 import matter from 'gray-matter';
 import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 
 function check<PromiseData>(cb: () => Promise<PromiseData>) {
   if (typeof cb !== 'function') {
@@ -30,6 +31,6 @@ export function formatDate(date: string): string {
 }
 
 export async function getMdxContent(slug: string) {
-  const rawContent = await readFile("./public/" + slug + "/index.mdx", "utf8")
+  const rawContent = await readFile(path.join(process.cwd(), 'public', slug,'index.mdx'), 'utf8')
   return matter(rawContent);
 }
