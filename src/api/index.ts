@@ -27,7 +27,7 @@ export const getPosts = async (): Promise<Post[]> => {
     }
 
     return posts.map(post => {
-      const rawContent = readFileSync("./public/" + post.slug + "/index.md", "utf8")
+      const rawContent = readFileSync("./public/" + post.slug + "/index.mdx", "utf8")
       const {data: metaData} = matter(rawContent);
 
       return {

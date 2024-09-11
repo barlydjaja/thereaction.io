@@ -4,11 +4,7 @@ import CreatedDate from '@/components/Home/Card/components/CreatedDate';
 import Description from '@/components/Home/Card/components/Description';
 import Thumbnail from '@/components/Home/Card/components/Thumbnail';
 
-interface CardProps {
-  metaData: Post['metaData']
-}
-
-const Card = ({metaData}: CardProps) => {
+const Card = ({metaData, slug}: Post) => {
   const {title, date, desc, thumbnail} = metaData;
 
   return (
@@ -20,7 +16,7 @@ const Card = ({metaData}: CardProps) => {
       </section>
 
       <section className='ml-10'>
-        <Thumbnail url={thumbnail}/>
+        <Thumbnail url={`/${slug}/${thumbnail}`}/>
       </section>
     </div>
   );

@@ -9,9 +9,9 @@ const PersonalLink = () => {
         <Image
           alt="Barly Djaja"
           src="https://github.com/barlydjaja.png"
-          className="relative -top-1 mx-1 inline h-8 w-8 rounded-full"
-          width={32}
-          height={32}
+          className="relative -top-1 mx-1 inline h-10 w-10 rounded-full"
+          width={40}
+          height={40}
         />
       </Link>
     </span>
