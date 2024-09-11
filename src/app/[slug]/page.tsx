@@ -10,7 +10,7 @@ interface BlogProps {
 }
 
 const Blog = async ({params}: BlogProps) => {
-  const {content, data: metaData} = getMdxContent(params.slug)
+  const {content, data: metaData} = await getMdxContent(params.slug)
   return (
     <div>
       <div>

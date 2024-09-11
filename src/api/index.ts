@@ -19,19 +19,19 @@ export const getPosts = async (): Promise<Post[]> => {
     return entries.map((entry) => ({slug: entry.name}))
   }
 
-  const getDirectoryMetaData = async (posts: null | Omit<Post, 'metaData'>[] ): Promise<Post[]> => {
+  const getDirectoryMetaData = (posts: null | Omit<Post, 'metaData'>[] ): Promise<Post[]> => {
     if (!posts) {
-      return []
+      return Promise.resolve([])
     }
 
-    return posts.map(post => {
-      const {data: metaData} = getMdxContent(post.slug)
+    return Promise.all(posts.map(async post => {
+      const {data: metaData} = await getMdxContent(post.slug)
 
       return {
         ...post,
         metaData,
       }
-    })
+    }))
   }
 
   const dirNames = await getDirectoryNames('./public')

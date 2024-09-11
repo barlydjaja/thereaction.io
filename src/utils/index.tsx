@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs';
 import matter from 'gray-matter';
+import { readFile } from 'node:fs/promises';
 
 function check<PromiseData>(cb: () => Promise<PromiseData>) {
   if (typeof cb !== 'function') {
@@ -29,7 +29,7 @@ export function formatDate(date: string): string {
   })
 }
 
-export function getMdxContent(slug: string): matter.GrayMatterFile<string> {
-  const rawContent = readFileSync("./public/" + slug + "/index.mdx", "utf8")
+export async function getMdxContent(slug: string) {
+  const rawContent = await readFile("./public/" + slug + "/index.mdx", "utf8")
   return matter(rawContent);
 }
