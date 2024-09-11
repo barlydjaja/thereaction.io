@@ -1,8 +1,6 @@
 import React from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { formatDate, getMdxContent } from '@/utils';
-import Thumbnail from '@/components/Home/Card/components/Thumbnail';
-import thumbnail from '@/components/Home/Card/components/Thumbnail';
 import Image from 'next/image';
 
 interface BlogProps {
