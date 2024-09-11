@@ -11,8 +11,10 @@
   "dependencies": {
     "@next/third-parties": "^14.2.9",
     "classnames": "^2.5.1",
+    "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "next": "14.2.8",
+    "next-mdx-remote": "^5.0.0",
     "react": "^18",
     "react-dom": "^18"
   },

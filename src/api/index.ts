@@ -1,7 +1,5 @@
 import { readdir } from 'node:fs/promises';
-import { tryCatch } from '@/utils';
-import matter from 'gray-matter';
-import { readFileSync } from 'fs';
+import { getMdxContent, tryCatch } from '@/utils';
 
 export interface Post {
   slug: string;
@@ -27,8 +25,7 @@ export const getPosts = async (): Promise<Post[]> => {
     }
 
     return posts.map(post => {
-      const rawContent = readFileSync("./public/" + post.slug + "/index.mdx", "utf8")
-      const {data: metaData} = matter(rawContent);
+      const {data: metaData} = getMdxContent(post.slug)
 
       return {
         ...post,

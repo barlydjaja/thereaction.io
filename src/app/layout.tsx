@@ -7,7 +7,7 @@ import PersonalLink from '@/components/PersonalLink';
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
-  title: "The Reaction - A Blog",
+  title: "The Reaction - A Blog by Barly",
   description: "A personal blog by Barly Djaja",
   alternates: {
     types: {
