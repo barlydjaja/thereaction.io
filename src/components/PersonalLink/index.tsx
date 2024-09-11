@@ -5,7 +5,8 @@ const PersonalLink = () => {
   return (
     <span className="relative top-[4px] italic">
       By&nbsp;
-      <Link href="https://barlydjaja.com" target="_blank">
+      {/*TODO: link should direct to personal web*/}
+      <Link href="https://github.com/barlydjaja" target="_blank">
         <Image
           alt="Barly Djaja"
           src="https://github.com/barlydjaja.png"
