@@ -23,22 +23,22 @@ and let fate take it's course. Their actions will show their genuine intentions 
 
 When it comes to people, communication is crucial, but you also need to know when to stop.
 There is no need to explain more than necessary in order to be treated the way you expected.
-Some will love, some will hate. Not because human don't understand, but because the refuse to.
+Some will love, some will hate. Not because they don't understand, but because they refuse to.
 
-**Whatever flows, flows. Whatever goes, let it go.**
+**Whatever flows, flows. Whatever goes, let go.**
 
-Remember, Whatever flows, flows. Whatever goes, let it go. What comes, comes. 
+Remember, Whatever flows, flows. Whatever goes, let go. What comes, comes. 
 What’s lost, let go. And what happens, accept. Better things come when you wait 
 for what’s truly meant for you. Accepting things is better than forcing them. Never 
 lose yourself trying to fit into someone else’s life.
 
 **When the right time comes**
 
-When the right time comes, you will meet the one true thing. The things that made your life worth living
-The one true love, job, and relationship. May they bring you peace and happiness. Live life to the fullest.
+When the right time comes, you will meet the one true thing. The things that made your life worth living. 
+The one true love, job, or relationship. May they bring you peace and happiness. Live life to the fullest.
 
 **We all deserved to be happy**
 
-One life. That's all there is for all of us. Make the best of it because we all
+**One life**. That's all there is for all of us. Make the best of it because we all
 deserves to be happy in this one life. If you feel you haven't found the one true call,
 be patient, universe might be working on bringing you together.
