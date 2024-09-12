@@ -1,5 +1,6 @@
 .markdown {
     line-height: 28px;
+    font-size: 20px;
     --path: none;
     --radius-top: 12px;
     --radius-bottom: 12px;
