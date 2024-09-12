@@ -1,6 +1,5 @@
 import matter from 'gray-matter';
 import { readFile } from 'node:fs/promises';
-import path from 'node:path';
 
 function check<PromiseData>(cb: () => Promise<PromiseData>) {
   if (typeof cb !== 'function') {
