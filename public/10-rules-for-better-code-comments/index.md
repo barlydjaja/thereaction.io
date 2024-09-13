@@ -1,5 +1,5 @@
 ---
-title: "The only 10 rules improve your code comments"
+title: "The only 10 rules for better code comments"
 date: '2024-09-13'
 desc: 'Rule 1: Comments should not duplicate the code. Rule 2: Good comments do not excuse unclear code.'
 thumbnail: 'thumbnail.webp'
