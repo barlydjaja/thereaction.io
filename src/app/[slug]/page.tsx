@@ -44,7 +44,7 @@ const Blog = async ({params}: BlogProps) => {
         {metaData.title}
       </h1>
 
-      <p className='text-md'>
+      <p className='text-base'>
         {formatDate(metaData.date)}
       </p>
 
