@@ -1,6 +1,5 @@
 .markdown {
-    line-height: 32px;
-    font-size: 20px;
+    @apply text-base sm:text-xl;
     --path: none;
     --radius-top: 12px;
     --radius-bottom: 12px;
@@ -9,7 +8,7 @@
 }
 
 .markdown p {
-    @apply pb-8;
+    @apply pb-4 sm:pb-8;
 }
 
 .markdown a {
@@ -56,20 +55,22 @@
 }
 
 .markdown blockquote {
-    @apply relative -left-2 -ml-4 mb-8 pl-4;
+    @apply relative -left-2 -ml-4 mb-4 sm:mb-8 pl-4 border-l-[5px] sm:border-l-[3px] border-[rgba(0,0,0,0.9)];
     font-style: italic;
-    border-left: 3px solid hsla(0, 0%, 0%, 0.9);
-    border-left-color: inherit;
     opacity: 0.8;
 }
 
 .markdown blockquote p {
-    margin: 0;
-    padding: 0;
+    @apply m-0 p-0;
 }
 
 .markdown p img {
     margin-bottom: 0;
+}
+
+.markdown ol {
+    list-style: decimal;
+    padding-inline-start: 40px;
 }
 
 .markdown ul {

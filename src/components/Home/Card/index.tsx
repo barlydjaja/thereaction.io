@@ -15,7 +15,7 @@ const Card = ({metaData, slug}: Post) => {
         <Description text={desc} />
       </section>
 
-      <section className='ml-10'>
+      <section className='ml-10 flex items-center'>
         <Thumbnail url={`/${slug}/${thumbnail}`}/>
       </section>
     </div>
