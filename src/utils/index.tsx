@@ -1,5 +1,7 @@
 import matter from 'gray-matter';
 import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { existsSync } from 'node:fs';
 
 function check<PromiseData>(cb: () => Promise<PromiseData>) {
   if (typeof cb !== 'function') {
@@ -32,4 +34,8 @@ export function formatDate(date: string): string {
 export async function getMdxContent(slug: string) {
   const rawContent = await readFile("./public/" + slug + "/index.md", "utf8")
   return matter(rawContent);
+}
+
+export function isValidMdPath(slug: string) {
+  return existsSync(path.join(process.cwd(), `public/${slug}`))
 }

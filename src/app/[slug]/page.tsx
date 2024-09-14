@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { formatDate, getMdxContent } from '@/utils';
+import { formatDate, getMdxContent, isValidMdPath, validateMdPath } from '@/utils';
 import Image from 'next/image';
 import { readdir } from 'node:fs/promises';
 import cx from 'classnames';
@@ -9,6 +9,8 @@ import remarkSmartpants from "remark-smartypants";
 import rehypePrettyCode from 'rehype-pretty-code';
 
 import '@/app/markdown.css'
+import { notFound } from 'next/navigation';
+import { metadata } from '@/app/layout';
 
 interface BlogProps {
   params: {
@@ -16,24 +18,11 @@ interface BlogProps {
   }
 }
 
-export async function generateMetadata({params}: BlogProps) {
-  const {data: metaData} = await getMdxContent(params.slug)
-
-  return {
-    title: metaData.title,
-    description: metaData.desc,
-  }
-}
-
-export async function generateStaticParams() {
-  const entries = await readdir("./public/", { withFileTypes: true });
-  const dirs = entries
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name);
-  return dirs.map((dir) => ({ slug: dir }));
-}
-
 const Blog = async ({params}: BlogProps) => {
+  if (!isValidMdPath(params.slug)) {
+    notFound()
+  }
+
   const {content, data: metaData} = await getMdxContent(params.slug)
   return (
     <article>
@@ -69,3 +58,27 @@ const Blog = async ({params}: BlogProps) => {
 };
 
 export default Blog;
+
+export async function generateMetadata({params}: BlogProps) {
+  if (!isValidMdPath(params.slug)) {
+    return {
+      title: metadata.title,
+      description: metadata.description,
+    }
+  }
+
+  const {data: metaData} = await getMdxContent(params.slug)
+
+  return {
+    title: metaData.title,
+    description: metaData.desc,
+  }
+}
+
+export async function generateStaticParams() {
+  const entries = await readdir("./public/", { withFileTypes: true });
+  const dirs = entries
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
+  return dirs.map((dir) => ({ slug: dir }));
+}
