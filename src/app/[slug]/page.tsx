@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { formatDate, getMdxContent, isValidMdPath, validateMdPath } from '@/utils';
+import { formatDate, getMdxContent, isValidMdPath } from '@/utils';
 import Image from 'next/image';
 import { readdir } from 'node:fs/promises';
 import cx from 'classnames';
