@@ -37,7 +37,7 @@ export default function RootLayout({children}: RootLayoutProps) {
         </main>
       </body>
 
-      {env === 'production' && <GoogleAnalytics gaId="G-NHKG3QM6ZP" />}
+      {/*{env === 'production' && <GoogleAnalytics gaId="G-NHKG3QM6ZP" />}*/}
     </html>
   );
 }

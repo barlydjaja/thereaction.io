@@ -36,13 +36,13 @@ So, how can we solve this?
 ```css
 .border-gradient-with-clip {
     background:
-            linear-gradient(white, white) padding-box, /*change the color 'white' to your need*/
+            linear-gradient(to right, white, white) padding-box, /*change the color 'white' to your need*/
             linear-gradient(to right, tomato, blue) border-box; /*this is the border gradient*/
     border: 2px solid transparent;
     border-radius: 16px;
 }
 ```
 
-<div style={{ display:'inline-block', border:'5px solid transparent', background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, tomato, blue) border-box;', borderRadius:'16px' }}>The Reaction</div>
+<div style={{ display:'inline-block', border:'5px solid transparent', background: 'linear-gradient(to right, white, white) padding-box,linear-gradient(to right,tomato,blue) border-box', borderRadius:'16px' }}>The Reaction</div>
 
 How does this work?
