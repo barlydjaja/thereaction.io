@@ -37,9 +37,14 @@ const Blog = async ({params}: BlogProps) => {
         {formatDate(metaData.date)}
       </p>
 
-      <div className='w-full h-80 relative my-10'>
-        <Image priority fill alt='thumbnail' src={`/${params.slug}/${metaData.thumbnail}`} sizes='40rem, 20rem' className='rounded object-cover'/>
-      </div>
+      {
+        metaData.thumbnail && (
+          <div className='w-full h-80 relative my-10'>
+            <Image priority fill alt='thumbnail' src={`/${params.slug}/${metaData.thumbnail}`} sizes='40rem, 20rem'
+                   className='rounded object-cover'/>
+          </div>
+        )
+      }
 
       <section className='mt10 markdown'>
         <MDXRemote

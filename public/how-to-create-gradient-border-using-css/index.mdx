@@ -1,0 +1,48 @@
+---
+title: "How to create gradient border and add border radius to it"
+date: '2024-09-16'
+desc: 'The best approach to create a gradient border using css'
+---
+
+You might have tried to create a gradient to a border using `border-image` property that looks similar to this
+
+```html
+<div class='border-gradient'>The Reaction</div>
+```
+
+```css
+.border-gradient {
+    display: inline-block;
+    border-width: 4px;
+    border-style: solid;
+    border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+    border-radius: 16px; /*<-- doesn't work*/
+}
+```
+
+<div style={{ display:'inline-block', border:'5px solid', borderImage: 'linear-gradient(to right, darkblue, darkorchid) 1' }}>The Reaction</div>
+<br/>
+<br/>
+
+But you then quickly realized that `border-radius` property doesn't work.
+So, how can we solve this?
+
+**we can use the `background-clip` property!**
+
+```html
+<div class='border-gradient-with-clip'>The Reaction</div>
+```
+
+```css
+.border-gradient-with-clip {
+    background:
+            linear-gradient(white, white) padding-box, /*change the color 'white' to your need*/
+            linear-gradient(to right, tomato, blue) border-box; /*this is the border gradient*/
+    border: 2px solid transparent;
+    border-radius: 16px;
+}
+```
+
+<div style={{ display:'inline-block', border:'5px solid transparent', background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, tomato, blue) border-box;', borderRadius:'16px' }}>The Reaction</div>
+
+How does this work?
