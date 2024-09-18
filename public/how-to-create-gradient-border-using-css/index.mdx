@@ -1,7 +1,8 @@
 ---
-title: "How to create gradient border and add border radius to it"
+title: "How to create gradient border and add radius to it"
 date: '2024-09-16'
 desc: 'The best approach to create a gradient border using css'
+thumbnail: 'thumbnail.png'
 ---
 
 You might have tried to create a gradient to a border using `border-image` property that looks similar to this
@@ -20,7 +21,11 @@ You might have tried to create a gradient to a border using `border-image` prope
 }
 ```
 
-<div style={{ display:'inline-block', border:'5px solid', borderImage: 'linear-gradient(to right, darkblue, darkorchid) 1' }}>The Reaction</div>
+<div style={{ border:'5px solid', borderImage: 'linear-gradient(to right, darkblue, darkorchid) 1', width: '300px', margin: 'auto' }}>
+  <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    The Reaction
+  </div>
+</div>
 <br/>
 <br/>
 
@@ -43,6 +48,8 @@ So, how can we solve this?
 }
 ```
 
-<div style={{ display:'inline-block', border:'5px solid transparent', background: 'linear-gradient(to right, white, white) padding-box,linear-gradient(to right,tomato,blue) border-box', borderRadius:'16px' }}>The Reaction</div>
-
-How does this work?
+<div style={{ border:'5px solid transparent', background: 'linear-gradient(to right, white, white) padding-box,linear-gradient(to right,tomato,blue) border-box', borderRadius:'16px',  width: '300px', margin: 'auto'  }}>
+  <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    The Reaction
+  </div>
+</div>
