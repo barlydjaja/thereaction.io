@@ -16,7 +16,8 @@
 }
 
 .markdown hr {
-    @apply pt-8 opacity-60 dark:opacity-10;
+    @apply mt-8 opacity-80 dark:opacity-10;
+    border-top: 1px solid var(--inlineCode-text);
 }
 
 .markdown h2 {
