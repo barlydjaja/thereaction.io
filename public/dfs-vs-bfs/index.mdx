@@ -91,6 +91,121 @@ export const differenceList = [
 ### Visualizing DFS and BFS
 Below is a simple illustration of **DFS** and **BFS** in graph traversal:
 
+export const backtrackUrl = 'https://datascientest.com/en/backtracking-what-is-it-how-do-i-use-it#:~:text=Backtracking%20is%20a%20search%20technique,optimization%2C%20planning%20and%20gaming%20problems'
+export const BacktrackAnchor = () => <a href={backtrackUrl} target='_blank'>backtrack</a>
+
 #### DFS Example:
 ![dfs illustration](dfs-vs-bfs/dfs.jpg)
+- Start at node `0`
+- Visit node `1`, then deep to node `3` and next node `4`
+- Once we hit the leaf (end) node, <BacktrackAnchor/> and visit node `2`, then visit node `5`, and then node `6`
 
+<br/>
+
+#### BFS Example:
+![dfs illustration](dfs-vs-bfs/bfs.jpg)
+- Start at node `0`
+- Visit node `1`, then to node `2`
+- Visit next level node `3`, then node `4`, then node `5`, and finally node `6`
+
+***
+
+### DFS and BFS Code Examples in JavaScript
+Let’s implement DFS and BFS using JavaScript
+
+#### DFS Implementation in JavasScript
+```js
+const graph = {
+    A: ['B', 'E'],
+    B: ['A', 'C'],
+    C: ['B', 'D', 'F'],
+    D: ['C'],
+    E: ['A'],
+    F: ['C']
+};
+
+function dfs(graph, node, visited = new Set()) {
+    visited.add(node);
+    console.log(node);
+
+    for (let neighbor of graph[node]) {
+        if (!visited.has(neighbor)) {
+            dfs(graph, neighbor, visited);
+        }
+    }
+}
+
+// Run DFS starting at node 'A'
+dfs(graph, 'A');
+
+// result A -> B -> C -> D -> F -> E
+```
+<br/>
+
+#### BFS Implementation in JavaScript
+```js
+const graph = {
+    A: ['B', 'E'],
+    B: ['A', 'C'],
+    C: ['B', 'D', 'F'],
+    D: ['C'],
+    E: ['A'],
+    F: ['C']
+};
+
+function bfs(graph, start) {
+    const queue = [start];
+    const visited = new Set();
+    visited.add(start);
+
+    while (queue.length > 0) {
+        const node = queue.shift();
+        console.log(node);
+
+        for (let neighbor of graph[node]) {
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor);
+                queue.push(neighbor);
+            }
+        }
+    }
+}
+
+// Run BFS starting at node 'A'
+bfs(graph, 'A');
+
+// result A -> B -> E -> C -> D -> F
+```
+
+***
+
+### When to use these algorithm?
+
+#### When to Use DFS:
+- You need to explore all possible paths (e.g., in puzzle-solving).
+- When you're dealing with deep graphs where exploring down a path is beneficial.
+
+<br/>
+
+#### When to Use BFS:
+- You want to find the shortest path in an unweighted graph (e.g., in routing problems).
+- You need to explore nodes level by level, like in social networks or when computing the shortest distance between two nodes.
+
+***
+
+### Conclusion
+Both DFS and BFS are indispensable tools for graph traversal.
+Knowing the difference between DFS and BFS helps you choose the right tool for the task at hand.
+Whether you’re navigating a complex maze (DFS) or searching for the shortest route (BFS),
+these algorithms provide efficient ways to explore the nodes and edges of any graph.
+
+***
+
+### FAQ
+#### 1. Which is faster, DFS or BFS?
+Both algorithms have the same time complexity of O(V+E) in general, where N is the number of vertices and M is the number of edges.
+However, BFS is typically better suited for finding the shortest path in unweighted graphs.
+
+#### 2. Does DFS guarantee the shortest path?
+No, DFS doesn’t guarantee finding the shortest path.
+It’s focused on exploring as far as possible down one branch before <BacktrackAnchor/>.
