@@ -8,7 +8,7 @@ const HomeLink = () => {
       href="/"
       className={cx(
         sans.className,
-        "inline-block text-2xl font-black hover:scale-[1.02]",
+        "inline-block text-2xl font-black hover:scale-[1.02] hover:text-[--link]",
       )}
     >
       <span className='font-bold'>The Reaction</span>

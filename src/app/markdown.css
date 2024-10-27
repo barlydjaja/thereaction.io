@@ -103,3 +103,7 @@
     display: block;
     padding-right: 1em;
 }
+
+.markdown table tr {
+    border-bottom: 1px var(--inlineCode-text) solid;
+}
