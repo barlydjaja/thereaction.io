@@ -77,7 +77,7 @@ export const differenceList = [
 
     <tbody>
         {differenceList.map(({feature, dfs, bfs}) => (
-            <tr>
+            <tr key={feature}>
                 <td>{feature}</td>
                 <td>{dfs}</td>
                 <td>{bfs}</td>
@@ -92,5 +92,7 @@ export const differenceList = [
 Below is a simple illustration of **DFS** and **BFS** in graph traversal:
 
 #### DFS Example:
-
+<p>
+  <img src="dfs.jpg" alt='dfs-img'/>
+</p>
 
