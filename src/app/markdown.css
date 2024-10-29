@@ -1,5 +1,5 @@
 .markdown {
-    @apply text-base sm:text-xl;
+    @apply text-base;
     --path: none;
     --radius-top: 12px;
     --radius-bottom: 12px;
