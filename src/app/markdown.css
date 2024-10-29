@@ -5,6 +5,7 @@
     --radius-bottom: 12px;
     --padding-top: 1rem;
     --padding-bottom: 1rem;
+    line-height: 1.7;
 }
 
 .markdown p {
