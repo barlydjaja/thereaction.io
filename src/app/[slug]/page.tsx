@@ -46,7 +46,10 @@ const Blog = async ({params}: BlogProps) => {
         )
       }
 
-      <section className='mt10 markdown'>
+      <section className={cx(
+        sans.className,
+        'mt10 markdown'
+      )}>
         <MDXRemote
           source={content}
           options={{
