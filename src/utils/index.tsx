@@ -23,13 +23,7 @@ export async function tryCatch<PromiseData, FnArgs extends unknown[] >(
   }
 }
 
-export function formatDate(date: string): string {
-  return new Date(date).toLocaleDateString("en", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  })
-}
+
 
 export async function getMdxContent(slug: string) {
   const rawContent = await readFile("./public/" + slug + "/index.mdx", "utf8")

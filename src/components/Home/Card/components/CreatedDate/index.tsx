@@ -1,4 +1,4 @@
-import { formatDate } from '@/utils';
+import { formatDate } from '@/utils/date';
 
 interface DateProps {
   date: string;

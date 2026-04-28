@@ -5,6 +5,8 @@ import { serif } from '@/app/fonts';
 import HomeLink from '@/components/HomeLink';
 import PersonalLink from '@/components/PersonalLink';
 import { GoogleAnalytics } from '@next/third-parties/google'
+import SmoothScrollProvider from '@/components/Providers/SmoothScrollProvider';
+import PageTransition from '@/components/ui/PageTransition';
 
 export const metadata: Metadata = {
   title: "The Reaction - A Blog by Barly",
@@ -26,15 +28,19 @@ export default function RootLayout({children}: RootLayoutProps) {
 
   return (
     <html lang="en" className={serif.className}>
-      <body className='antialiased mx-auto max-w-screen-md bg-[--bg] px-5 py-12 text-[--text]'>
-        <header className="mb-14 flex flex-row place-content-between flex-wrap items-center">
-          <HomeLink/>
-          <PersonalLink/>
-        </header>
+      <body className='antialiased mx-auto max-w-screen-md bg-[--bg] px-5 py-12 text-[--text] selection:bg-neutral-800 selection:text-white'>
+        <SmoothScrollProvider>
+          <header className="mb-14 flex flex-row place-content-between flex-wrap items-center relative z-10">
+            <HomeLink/>
+            <PersonalLink/>
+          </header>
 
-        <main>
-          {children}
-        </main>
+          <main className="relative z-10">
+            <PageTransition>
+              {children}
+            </PageTransition>
+          </main>
+        </SmoothScrollProvider>
       </body>
 
       {env === 'production' && <GoogleAnalytics gaId="G-NHKG3QM6ZP" />}

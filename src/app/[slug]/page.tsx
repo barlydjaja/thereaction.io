@@ -1,6 +1,7 @@
 import React from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { formatDate, getMdxContent, isValidMdPath } from '@/utils';
+import { getMdxContent, isValidMdPath } from '@/utils';
+import { formatDate } from '@/utils/date';
 import Image from 'next/image';
 import { readdir } from 'node:fs/promises';
 import cx from 'classnames';
@@ -13,17 +14,19 @@ import { notFound } from 'next/navigation';
 import { metadata } from '@/app/layout';
 
 interface BlogProps {
-  params: {
+  params: Promise<{
     slug: string;
-  }
+  }>
 }
 
 const Blog = async ({params}: BlogProps) => {
-  if (!isValidMdPath(params.slug)) {
+  const { slug } = await params;
+
+  if (!isValidMdPath(slug)) {
     notFound()
   }
 
-  const {content, data: metaData} = await getMdxContent(params.slug)
+  const {content, data: metaData} = await getMdxContent(slug)
   return (
     <article>
       <h1 className={cx(
@@ -40,7 +43,7 @@ const Blog = async ({params}: BlogProps) => {
       {
         metaData.thumbnail && (
           <div className='w-full h-80 relative my-10'>
-            <Image priority fill alt='thumbnail' src={`/${params.slug}/${metaData.thumbnail}`} sizes='40rem, 20rem'
+            <Image priority fill alt='thumbnail' src={`/${slug}/${metaData.thumbnail}`} sizes='40rem, 20rem'
                    className='rounded object-contain' />
           </div>
         )
@@ -68,14 +71,16 @@ const Blog = async ({params}: BlogProps) => {
 export default Blog;
 
 export async function generateMetadata({params}: BlogProps) {
-  if (!isValidMdPath(params.slug)) {
+  const { slug } = await params;
+  
+  if (!isValidMdPath(slug)) {
     return {
       title: metadata.title,
       description: metadata.description,
     }
   }
 
-  const {data: metaData} = await getMdxContent(params.slug)
+  const {data: metaData} = await getMdxContent(slug)
 
   return {
     title: metaData.title,
