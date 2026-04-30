@@ -8,10 +8,13 @@ import cx from 'classnames';
 import { sans } from '@/app/fonts';
 import remarkSmartpants from "remark-smartypants";
 import rehypePrettyCode from 'rehype-pretty-code';
+import type { Metadata } from 'next';
 
 import '@/app/markdown.css'
 import { notFound } from 'next/navigation';
 import { metadata } from '@/app/layout';
+
+const SITE_URL = 'https://thereaction.io';
 
 interface BlogProps {
   params: Promise<{
@@ -27,8 +30,39 @@ const Blog = async ({params}: BlogProps) => {
   }
 
   const {content, data: metaData} = await getMdxContent(slug)
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: metaData.title,
+    description: metaData.desc,
+    datePublished: metaData.date,
+    dateModified: metaData.date,
+    author: {
+      "@type": "Person",
+      name: "Barly Djaja",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Barly Djaja",
+      url: SITE_URL,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/${slug}`,
+    },
+    ...(metaData.thumbnail && {
+      image: `${SITE_URL}/${slug}/${metaData.thumbnail}`,
+    }),
+  };
+
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <h1 className={cx(
         sans.className,
         'text-4xl font-bold text-[--text] leading-[52px]'
@@ -43,8 +77,14 @@ const Blog = async ({params}: BlogProps) => {
       {
         metaData.thumbnail && (
           <div className='w-full h-80 relative my-10'>
-            <Image priority fill alt='thumbnail' src={`/${slug}/${metaData.thumbnail}`} sizes='40rem, 20rem'
-                   className='rounded object-contain' />
+            <Image
+              priority
+              fill
+              alt={metaData.title}
+              src={`/${slug}/${metaData.thumbnail}`}
+              sizes='(max-width: 768px) 100vw, 40rem'
+              className='rounded object-contain'
+            />
           </div>
         )
       }
@@ -70,21 +110,51 @@ const Blog = async ({params}: BlogProps) => {
 
 export default Blog;
 
-export async function generateMetadata({params}: BlogProps) {
+export async function generateMetadata({params}: BlogProps): Promise<Metadata> {
   const { slug } = await params;
-  
+
   if (!isValidMdPath(slug)) {
     return {
-      title: metadata.title,
-      description: metadata.description,
+      title: typeof metadata.title === 'string' ? metadata.title : undefined,
+      description: metadata.description ?? undefined,
     }
   }
 
   const {data: metaData} = await getMdxContent(slug)
+  const url = `${SITE_URL}/${slug}`;
+  const ogImage = metaData.thumbnail
+    ? `${SITE_URL}/${slug}/${metaData.thumbnail}`
+    : 'https://github.com/barlydjaja.png';
 
   return {
     title: metaData.title,
     description: metaData.desc,
+    authors: [{ name: 'Barly Djaja', url: SITE_URL }],
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      type: 'article',
+      title: metaData.title,
+      description: metaData.desc,
+      url,
+      siteName: 'The Reaction',
+      publishedTime: metaData.date,
+      authors: ['Barly Djaja'],
+      images: [
+        {
+          url: ogImage,
+          alt: metaData.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metaData.title,
+      description: metaData.desc,
+      images: [ogImage],
+      creator: '@barlydjaja',
+    },
   }
 }
 

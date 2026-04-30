@@ -8,13 +8,69 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import SmoothScrollProvider from '@/components/Providers/SmoothScrollProvider';
 import PageTransition from '@/components/ui/PageTransition';
 
+const SITE_URL = "https://thereaction.io";
+const SITE_NAME = "The Reaction";
+const SITE_DESCRIPTION =
+  "Musings on software engineering, life, and everything in between by Barly Djaja.";
+
 export const metadata: Metadata = {
-  title: "The Reaction - A Blog by Barly",
-  description: "A personal blog by Barly Djaja",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — A Blog by Barly`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: "Barly Djaja", url: SITE_URL }],
+  creator: "Barly Djaja",
+  publisher: "Barly Djaja",
+  keywords: [
+    "Barly Djaja",
+    "The Reaction",
+    "software engineering blog",
+    "frontend engineering",
+    "web development",
+    "personal blog",
+  ],
   alternates: {
+    canonical: "/",
     types: {
-      "application/atom+xml": "https://thereaction.io/atom.xml",
-      "application/rss+xml": "https://thereaction.io/rss.xml",
+      "application/atom+xml": `${SITE_URL}/atom.xml`,
+      "application/rss+xml": `${SITE_URL}/rss.xml`,
+    },
+  },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — A Blog by Barly`,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    locale: "en_US",
+    images: [
+      {
+        url: "https://github.com/barlydjaja.png",
+        width: 460,
+        height: 460,
+        alt: "Barly Djaja",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — A Blog by Barly`,
+    description: SITE_DESCRIPTION,
+    creator: "@barlydjaja",
+    images: ["https://github.com/barlydjaja.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
 };

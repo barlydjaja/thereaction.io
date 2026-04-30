@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Card from '@/components/Home/Card';
-import { Post } from '@/api';
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Card from "@/components/Home/Card";
+import { Post } from "@/api";
 
 interface AnimatedFeedProps {
   posts: Post[];
@@ -23,24 +23,27 @@ export default function AnimatedFeed({ posts }: AnimatedFeedProps) {
         </h2>
       </motion.div>
       <div className="flex flex-col gap-10">
-      {posts.map(({ slug, metaData }, index) => (
-        <motion.div
-          key={slug}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-        >
-          <Link href={slug} className="block group">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            >
-              <Card metaData={metaData} slug={slug} />
-            </motion.div>
-          </Link>
-        </motion.div>
-      ))}
+        {posts.map(({ slug, metaData }, index) => (
+          <motion.div
+            key={slug}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: index * 0.1,
+              ease: [0.21, 0.47, 0.32, 0.98],
+            }}
+          >
+            <Link href={slug} className="block group">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              >
+                <Card metaData={metaData} slug={slug} />
+              </motion.div>
+            </Link>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
